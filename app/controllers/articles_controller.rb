@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+
   # GET /articles
   # GET /articles.json
   def index
@@ -10,18 +11,22 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.all.order('created_at DESC')
     end
-        
+
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    @article.increment!(:views)
+    #@article.views = 1
   end
 
   # GET /articles/new
   def new
     @article = Article.new
+    #@article.views = 0
   end
 
   # GET /articles/1/edit
@@ -36,6 +41,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
+    @article.views = 0
 
     respond_to do |format|
       if @article.save
@@ -80,6 +86,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :image)
+      params.require(:article).permit(:title, :body, :image, :views)
     end
 end
