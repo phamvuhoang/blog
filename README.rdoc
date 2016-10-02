@@ -29,6 +29,7 @@ The following **additional** features are implemented:
 
 - [x] Move "New Article" button to top, above article list
 - [x] Add image url field to allow user to input an url to image to be displayed inside article, check null or not before displaying
+- [x] Add mandatory validation for title
 
 
 ## Video Walkthrough 
