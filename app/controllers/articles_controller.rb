@@ -20,13 +20,11 @@ class ArticlesController < ApplicationController
   def show
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
     @article.increment!(:views)
-    #@article.views = 1
   end
 
   # GET /articles/new
   def new
     @article = Article.new
-    #@article.views = 0
   end
 
   # GET /articles/1/edit
@@ -41,7 +39,6 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-    #@article.views = 0
 
     respond_to do |format|
       if @article.save

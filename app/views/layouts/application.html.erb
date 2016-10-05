@@ -8,7 +8,46 @@
 </head>
 <body>
 
-<%= yield %>
+	<div class="container">
+
+		<p id="notice"><%= notice %></p>
+
+		<div class="row">
+			<div class="col-sm-8">
+				<img src="http://s12.postimg.org/44rhk2flp/henry.jpg" alt="Henry" class="pull-xs-right" />
+				<h1 class="text-xs-center">Henry's Blog</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-8">
+				<nav class="navbar navbar-light bg-faded">
+				  <a class="navbar-brand" href="#">Navbar</a>
+				  <ul class="nav navbar-nav">
+				    <li class="nav-item active">
+				      <a class="nav-link" href="#">My Blog <span class="sr-only">(current)</span></a>
+				    </li>
+				    <li class="nav-item">
+				      <a class="nav-link" href="#">About</a>
+				    </li>
+				  </ul>
+				  <form class="form-inline pull-xs-right">
+					<!-- Search form -->
+					<%= form_tag(articles_path, :method => "get", id: "search-form") do %>
+					<%= text_field_tag :search, params[:search], placeholder: "Search Articles", class: 'form-control' %>
+					<%= submit_tag "Search", class: 'btn btn-outline-success' %>
+					<% end %>
+				  </form>
+				</nav>
+			</div>
+		</div>
+
+		<br>
+
+		<%= yield %>
+
+	  
+	</div>
 
 </body>
 </html>

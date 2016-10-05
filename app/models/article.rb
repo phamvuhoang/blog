@@ -4,6 +4,8 @@ class Article < ActiveRecord::Base
 	  where("title ILIKE ?", "%#{search}%") 
 	end
 
-	validates :title, :presence => { :message => "Title cannot be blank" }
+	has_many :comments
+	validates :title, :presence => { :message => "Title cannot be blank" }, length: {minimum: 5}
+	validates :body, :presence => { :message => "Body cannot be blank" }
 
 end

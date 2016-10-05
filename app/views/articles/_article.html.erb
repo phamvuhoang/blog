@@ -11,6 +11,7 @@
 		<p class="card-text"><%= @markdown.render(article.body).html_safe %></p>
 	  </div>
 	  <div class="card-footer">
+	  	<%= link_to 'View', article_path(article), class: 'btn btn-primary' %>
 	  	<%= link_to 'Edit', edit_article_path(article), class: 'btn btn-warning' %>
 	  	Views: <%= article.views %>
 		<%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Article will be completely deleted, are you sure?' }, class: 'btn btn-danger  pull-xs-right' %>	  
