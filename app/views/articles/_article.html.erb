@@ -2,19 +2,19 @@
   <div class="col-sm-8">
     <div class="card">
       <div class="card-header">
-      	<h4><%= article.title %></h4>
+      	<h4><%= link_to article.title, article %></h4>
       </div>
 	  <div class="card-block">
 	  	<% if article.image.present? %>
 		  	<img class="img-rounded " src=<%= article.image %> alt="Content image">
 	  	<% end %>
-		<p class="card-text"><%= @markdown.render(article.body).html_safe %></p>
+		<p class="card-text"><%= @markdown.render(truncate(article.body)).html_safe %></p>
 	  </div>
 	  <div class="card-footer">
 	  	<%= link_to 'View Details', article_path(article), class: 'btn btn-primary' %>
 	  	<%= link_to 'Edit', edit_article_path(article), class: 'btn btn-warning' %>
 	  	Views: <%= article.views %> | Comments: <%= article.comments.count %>
-		<%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Article will be completely deleted, are you sure?' }, class: 'btn btn-danger  pull-xs-right' %>	  
+		<%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Article will be completely deleted, are you sure?' }, class: 'btn btn-danger pull-xs-right' %>	  
 	  </div>
 	</div>
   </div>

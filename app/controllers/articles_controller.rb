@@ -75,6 +75,11 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Truncate long blog body
+  def truncate(string)
+    string.length > 300 ? "#{string[0...300]}..." : string
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
