@@ -1,13 +1,3 @@
-<div class="row">
-	<div class="col-sm-8">
-
-		<!-- Create new -->
-		<%= link_to 'New Article', new_article_path, class: 'btn btn-primary pull-xs-right' %>
-
-	</div>
-</div>
-<br>
-
 <!-- Display search results -->
 <% if @articles.present? %>
   <%= render @articles %>
